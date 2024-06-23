@@ -1,10 +1,12 @@
-<div class="relative bg-white" x-data="{ mobileMenuOpen: true }">
+{% assign main_menu_linklist = linklists[section.settings.menu].links %}
+
+  <div class="relative bg-white" x-data="{ mobileMenuOpen: true }">
   <div class="mx-auto px-4 sm:px-6">
 
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
       <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ shop.name | upcase }}</h1>
+        <h1 class="text-xl font-bold truncate">{{ section.settings.header_text | upcase }}</h1>
       </div>
 
       <!-- HAMBURGER ICON -->
@@ -16,7 +18,7 @@
 
       <!-- NAVIGATION MENU -->
       <nav class="hidden md:flex space-x-10">
-        {% for link in linklists.main-menu.links %}
+        {% for link in main_menu_linklist %}
 
           {% if link.links != blank %}
             <div x-data="{open: false}" class="relative">
@@ -95,7 +97,7 @@
         <!-- NAVIGATION LINKS FOR MOBILE MENU -->
         <div class="pt-3">
           <nav class="grid gap-y-7">
-            {% for link in linklists.main-menu.links %}
+            {% for link in main_menu_linklist %}
               {% if link.links != blank %}
                 <div x-data="{dropdown: false}" class="relative">
                   <button
@@ -128,3 +130,23 @@
     </div>
   </div>
 </div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "header_text",
+        "label": "Header Text",
+        "default": "Welcome to our store",
+        "info": "This text will be displayed in the header."
+      }, {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Header Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}
