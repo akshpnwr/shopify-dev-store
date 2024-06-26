@@ -1,0 +1,18 @@
+<section class="px-5">
+
+  <h1 class="text-3xl font-bold">
+    {{ article.title }}
+  </h1>
+  <small>{{ article.author }}</small>
+  <time datetime={{article.published_at | date: "%Y-%m-%d"}}>{{ article.published_at | date: "%Y-%m-%d" }}</time>
+  <img
+    src={{article.image | image_url: 'large'}}
+    alt={{article.image.alt}}
+    srcset=""
+    width="100%"
+    height="auto" />
+
+  <p class="text-justify">
+    {{ article.content }}
+  </p>
+</section>
