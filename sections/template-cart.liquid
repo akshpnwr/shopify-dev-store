@@ -28,7 +28,7 @@
                       <img
                         src="{{ item.image | img_url: 'thumb' }}"
                         alt="{{ item.title |  escape }}"
-                        class="w-16 h-16 object-cover rounded-md">
+                        class="w-16 h-16 object-cover rounded-md" />
                     {% else %}
                       {{ 'product-1' | placeholder_svg_tag }}
                     {% endif %}
@@ -67,24 +67,32 @@
             </div>
           </div>
           <div class="w-full my-4 md:w-80">
-            <h3 class="text-xl">Subtotal: {{ cart.total_price | money }}</h3>
-            <div class="my-2">
-              <button
-                name="update"
-                type="submit"
-                class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">
-                Update
-              </button>
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'cart_subtotal' %}
+                  <h3 class="text-xl">Subtotal: {{ cart.total_price | money }}</h3>
+                {% when 'cart_update_btn' %}
+                  <div class="my-2">
+                    <button
+                      name="update"
+                      type="submit"
+                      class="w-full p-3 border border-gray-600 text-gray-600 font-medium hover:bg-gray-600 hover:text-white">
+                      Update
+                    </button>
 
-            </div>
-            <div class="my-2">
-              <button
-                name="checkout"
-                type="submit"
-                class="w-full p-3 border border-gray-600 bg-gray-600 text-white font-medium">
-                Checkout
-              </button>
-            </div>
+                  </div>
+                {% when 'cart_checkout_btn' %}
+                  <div class="my-2">
+                    <button
+                      name="checkout"
+                      type="submit"
+                      class="w-full p-3 border border-gray-600 bg-gray-600 text-white font-medium">
+                      Checkout
+                    </button>
+                  </div>
+              {% endcase %}
+            {% endfor %}
+
           </div>
         </div>
       </form>
@@ -112,6 +120,21 @@
         "id": "title",
         "default": "Your cart",
         "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "cart_subtotal",
+        "limit": 1,
+        "name": "Cart Subtotal"
+      }, {
+        "type": "cart_update_btn",
+        "limit": 1,
+        "name": "Cart Update Button"
+      }, {
+        "type": "cart_checkout_btn",
+        "limit": 1,
+        "name": "Cart Checkout Button"
       }
     ]
   }
