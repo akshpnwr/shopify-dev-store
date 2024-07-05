@@ -41,6 +41,10 @@
         {% endfor %}
       </div>
     </div>
+    <div class="max-w-6xl mx-auto">
+      {% render 'pagination'
+        , pagination: paginate %}
+    </div>
   {% endpaginate %}
 </div>
 
@@ -55,7 +59,7 @@
         "step": 1,
         "min": 1,
         "max": 6,
-        "default": 3
+        "default": 1
       }, {
         "type": "checkbox",
         "label": "Display image",
