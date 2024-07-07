@@ -1,0 +1,19 @@
+<div class="flex flex-col border-2 rounded-md">
+  <div class="h-80 overflow-hidden">
+    <a href={{product.url}}>
+      {% if product.featured_image %}
+        <img
+          class="w-full h-full object-cover"
+          src="{{product.featured_image |  img_url: 'large' }}"
+          alt="{{product.featured_image.alt}}" />
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-cover bg-gray-300' }}
+      {% endif %}
+    </a>
+  </div>
+  <div class="p-2">
+    <span class="text-gray-500 text-sm">{{ product.vendor }}</span>
+    <h1 class=" text-lg">{{ product.title | upcase }}</h1>
+    <p class="font-bold text-sm text-gray-500">{{ product.price | money }}</p>
+  </div>
+</div>
