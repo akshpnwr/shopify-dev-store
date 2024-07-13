@@ -4,8 +4,8 @@
     "template": {
       "type": "template-product",
       "blocks": {
-        "size": {
-          "type": "size"
+        "variant_selector": {
+          "type": "variant_selector"
         },
         "quantity": {
           "type": "quantity"
@@ -30,7 +30,7 @@
         "vendor",
         "title",
         "price",
-        "size",
+        "variant_selector",
         "quantity",
         "description",
         "checkout_btn"
