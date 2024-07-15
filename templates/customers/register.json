@@ -2,7 +2,13 @@
   "sections": {
     "template": {
       "type": "template-register"
+    },
+    "contact-form": {
+      "type": "contact-form",
+      "settings": {
+        "title": "You have a problem? contact us."
+      }
     }
   },
-  "order": ["template"]
+  "order": ["template", "contact-form"]
 }
