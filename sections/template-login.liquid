@@ -47,6 +47,12 @@
       </div>
     {% endform %}
   </div>
+  <span class="my-3">OR</span>
+  <div class="w-2/5">
+    {% form 'guest_login' %}
+      <button type="submit" class="submit relative w-full py-2 px-4 text-sm font-medium text-white bg-gray-600 hover:bg-gray-900">Continue as a guest?</button>
+    {% endform %}
+  </div>
   <div x-show="pwRecoverForm" class="max-w-md w-full space-y-8">
     <div class="max-w-md w-full space-y-8">
       <h1 class="text-center text-3xl font-bold mt-6">Recover password</h1>
