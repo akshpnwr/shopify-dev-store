@@ -14,11 +14,19 @@
     <div class="outfit-container">
       {% for outfit in customer.metafields.outfits %}
         <div class="outfit">
-          <h3>{{ outfit.outfit_na_e }}</h3>
+          <h3>{{ outfit.outfit_name }}</h3>
           <div class="outfit-items">
-            <p>Top: {{ outfit.tops  }}</p>
-            <p>Pants: {{ outfit.pants  }}</p>
-            <p>Accessories: {{ outfit.accessories }}</p>
+      <!-- Get the product details for the top -->
+      {% assign top_product = all_products[outfit.tops] %}
+      <p>Top: {{ top_product.title }}</p>
+
+      <!-- Get the product details for the pants -->
+      {% assign pants_product = all_products[outfit.pants] %}
+      <p>Pants: {{ pants_product.title }}</p>
+
+      <!-- Get the product details for the accessories -->
+      {% assign accessories_product = all_products[outfit.accessories] %}
+      <p>Accessories: {{ accessories_product.title }}</p>
           </div>
         </div>
       {% endfor %}
