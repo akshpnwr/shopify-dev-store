@@ -9,6 +9,20 @@
         {% render 'product-card-placeholder' %}
       {% endfor %}
     {% endfor %}
+
+    <h2>Outfit Preview</h2>
+    <div class="outfit-container">
+      {% for outfit in customer.metafields.outfits %}
+        <div class="outfit">
+          <h3>{{ outfit.outfit_na_e }}</h3>
+          <div class="outfit-items">
+            <p>Top: {{ outfit.tops  }}</p>
+            <p>Pants: {{ outfit.pants  }}</p>
+            <p>Accessories: {{ outfit.accessories }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
